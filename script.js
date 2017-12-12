@@ -22,16 +22,15 @@ function glowUp() {
     for (i = 0; i < 4; i++) {
     var grabColor = document.getElementsByClassName('main-buttons')[i]
     grabColor.addEventListener('click', function() {
-        this.style.background = '#4682B4'
-        setTimeout(function() {blueButton.style.background = 'blue'}, 1000)
-        setTimeout(function() {redButton.style.background = 'red'}, 1000)
-        setTimeout(function() {greenButton.style.background = 'green'}, 1000)
-        setTimeout(function() {yellowButton.style.background = 'yellow'}, 1000)
+        this.style.opacity = '0.5'
+        setTimeout(function() {blueButton.style.opacity = '1'}, 500)
+        setTimeout(function() {redButton.style.opacity = '1'}, 500)
+        setTimeout(function() {greenButton.style.opacity = '1'}, 500)
+        setTimeout(function() {yellowButton.style.opacity = '1'}, 500)
         })
     }
 }
 
 glowUp()
 
-// glowUp.setTimeout(hello, 1000)
-// setTimeout(anonfunction(change color back to original), time in ms)
+// opacity https://www.w3schools.com/jsref/prop_style_opacity.asp

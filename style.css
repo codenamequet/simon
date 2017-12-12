@@ -8,19 +8,17 @@
 } */
 .blue {
     background: blue;
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
     border-radius: 0 100% 0 0;
     margin-left: 475px;
     margin-top: 250px;
-    /* height: 100px;
-    width: 100px; */
 }
 
 .red {
     background: red;
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
     border-radius: 0 0 100% 0;
     margin-top: 25px;
     margin-left: 475px;
@@ -28,18 +26,22 @@
 
 .yellow {
     background: yellow;
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
     border-radius: 100% 0 0 0;
-    margin-top: -225px;
-    margin-left: 350px;
+    margin-top: -425px;
+    margin-left: 250px;
 }
 
 .green {
     background: green;  
-    height: 100px;
-    width: 100px;  
+    height: 200px;
+    width: 200px; 
     border-radius: 0 0 0 100%;
     margin-top: 25px;
-    margin-left: 350px;
+    margin-left: 250px;
 }
+
+/* .game-button {
+    background: greenyellow
+} */
