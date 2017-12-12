@@ -16,8 +16,9 @@ function userInput() {
      let grabColor = document.getElementsByClassName('main-buttons')[i]
         grabColor.addEventListener('click', function() {
             this.style.opacity = '0.5'
-            game.userSequence.push(grabColor) // push the choice into userchoices array
+            game.userSequence.push(this) // push the choice into userchoices array
             // increment the round counter
+            //turns glowing lights back to normal color
             setTimeout(function() {blueButton.style.opacity = '1'}, 500)
             setTimeout(function() {redButton.style.opacity = '1'}, 500)
             setTimeout(function() {greenButton.style.opacity = '1'}, 500)
@@ -26,6 +27,15 @@ function userInput() {
     }
 }
 
+userInput()
+
+function glowUp () {
+    function cpuGlow() {
+        this.Math.floor(Math.random()*gameLights.length)
+    }
+    cpuGlow()
+}
+//object for running the game and rounds
 var game = {
     round: 0,
     lights: ['blue', 'red', 'green', 'yellow'],
@@ -33,20 +43,31 @@ var game = {
     userSequence: []
 }
 
-newGame = document.getElementsByClassName('start-button')[0] 
-newGame.addEventListener('click', function() {
-    game.round()
-    game.lightSequence()
-    game.userSequence()
-    if (lightSequence === userSequence) {
-        game.round ++
-        console.log('work')
-    }
-})
+// click start button to start a round. May change this to equal runGame function
+// var newGame = document.getElementsByClassName('start-button')[0] 
+// newGame.addEventListener('click', function() {
+//     console.log('work')
+//     console.log(game.round)
+//     console.log(game.lightSequence)
+    //should probably stop after starting first round and first light sequence
+//     console.log(game.userSequence)
+//     if (game.lightSequence === game.userSequence) {
+//         game.round ++
+//         console.log('work')
+//     }
+// })
 
-userInput()
+function runGame () {
+    game.round
+    game.lightSequence
+    game.userSequence
+    if (game.lightSequence === game.userSequence) {
+        game.round ++
+    }
+}
+
 var gameLights = document.getElementsByClassName('main-buttons')
-var randomLight = Math.floor(Math.random()*gameLights.length)
+let randomLight = Math.floor(Math.random()*gameLights.length)
 var lightSequence = [] // the sequence of random colors chosen by simon
 var userSequence = [] //the sequence of colors selected by the user
 
