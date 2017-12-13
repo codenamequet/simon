@@ -27,20 +27,25 @@ function userInput() {
     }
 }
 
+function glowUp () {
+    var lightUp = (Math.floor(Math.random() *game.lights.length))
+    console.log(lightUp)
+    game.lightSequence.push(lightUp)
+    console.log(lightSequence)
+}
+
 userInput()
 
-function glowUp () {
-        for (i = 0; i < game.lights.length; i ++) {
-            // console.log(Math.floor(Math.random() * game.lights.length))
-            // game.lightSequence.push(this)
-            var lightUp = (Math.floor(Math.random() * i))
-            game.lights[i]
-            console.log(game.lights[i])
-            game.lightSequence.push(lightUp)
-            console.log(lightUp)
-        }
-        // this.Math.floor(Math.random()*gameLights.length)
-}
+// function glowUp () {
+//         for (i = 0; i < game.lights.length; i ++) {
+//             // console.log(Math.floor(Math.random() * game.lights.length))
+//             var lightUp = (Math.floor(Math.random() * game.lights.length))
+//             game.lights[i]
+//             console.log(game.lights[i])
+//             game.lightSequence.push(lightUp)
+//             console.log(lightUp)
+//         }
+// }
 
 //for loop through game.lights array when color is selected make it match up with button in the html and make that light glow
 //object for running the game and rounds
