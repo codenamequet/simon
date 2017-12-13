@@ -10,6 +10,7 @@ var game = {
     lightSequence: [],
     userSequence: []
 }
+
 // turns lights off after set amount of time
 function lightsOff () {
     setTimeout(function() {blueButton.style.opacity = '1'}, 500)
@@ -20,6 +21,8 @@ function lightsOff () {
 
 //lets simon select random lights
 function glowUp () {
+    game.lightSequence
+    console.log(game.lightSequence)
     let randomLight = (Math.floor(Math.random() * game.lights.length))
     console.log(randomLight)
     var lightUp = document.getElementsByClassName('main-buttons')[randomLight]
@@ -70,7 +73,7 @@ function handleUserChoice () {
     for (i = 0 ; i < 100; i++) {
         if (game.lightSequence[i] === game.userSequence[i]) {
         game.round ++
-        // clear userSequence array
+        userSequence = []// clear userSequence array
         //glowUp()
         //clear userSequence array, return lightSequence array and start glowUp again
         } else {
@@ -78,9 +81,6 @@ function handleUserChoice () {
         }
     }
 }
-// glowUp()
-    // in a for loop
-    //  game.userSequence[i] === game.lightSequence[i]
 
 //for loop through game.lights array when color is selected make it match up with button in the html and make that light glow
 
