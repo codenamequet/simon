@@ -30,11 +30,19 @@ function userInput() {
 userInput()
 
 function glowUp () {
-    function cpuGlow() {
-        this.Math.floor(Math.random()*gameLights.length)
-    }
-    cpuGlow()
+        for (i = 0; i < game.lights.length; i ++) {
+            // console.log(Math.floor(Math.random() * game.lights.length))
+            // game.lightSequence.push(this)
+            var lightUp = (Math.floor(Math.random() * i))
+            game.lights[i]
+            console.log(game.lights[i])
+            game.lightSequence.push(lightUp)
+            console.log(lightUp)
+        }
+        // this.Math.floor(Math.random()*gameLights.length)
 }
+
+//for loop through game.lights array when color is selected make it match up with button in the html and make that light glow
 //object for running the game and rounds
 var game = {
     round: 0,
