@@ -9,8 +9,35 @@ var blueButton = document.getElementsByClassName('main-buttons')[0]
 var redButton = document.getElementsByClassName('main-buttons')[1]
 var greenButton = document.getElementsByClassName('main-buttons')[3]
 var yellowButton = document.getElementsByClassName('main-buttons')[2]
-
+       
+//object for running the game and rounds
+var game = {
+    round: 0,
+    lights: ['blue', 'red', 'green', 'yellow'],
+    lightSequence: [],
+    userSequence: []
+}
+// turns lights off after set amount of time
+function lightsOff () {
+    setTimeout(function() {blueButton.style.opacity = '1'}, 500)
+    setTimeout(function() {redButton.style.opacity = '1'}, 500)
+    setTimeout(function() {greenButton.style.opacity = '1'}, 500)
+    setTimeout(function() {yellowButton.style.opacity = '1'}, 500)
+}
 //make colors glow when clicked on
+function glowUp () {
+    let randomLight = (Math.floor(Math.random() * game.lights.length))
+    console.log(randomLight)
+    var lightUp = document.getElementsByClassName('main-buttons')[randomLight]
+    console.log(lightUp)
+    lightUp.style.opacity = '0.5'
+    lightsOff()
+    game.lightSequence.push(randomLight)
+    console.log(game.lightSequence)
+}
+
+glowUp()
+
 function userInput() {
     for (i = 0; i < 4; i++) {
      let grabColor = document.getElementsByClassName('main-buttons')[i]
@@ -19,50 +46,25 @@ function userInput() {
             game.userSequence.push(this) // push the choice into userchoices array
             // increment the round counter
             //turns glowing lights back to normal color
-            setTimeout(function() {blueButton.style.opacity = '1'}, 500)
-            setTimeout(function() {redButton.style.opacity = '1'}, 500)
-            setTimeout(function() {greenButton.style.opacity = '1'}, 500)
-            setTimeout(function() {yellowButton.style.opacity = '1'}, 500)
+            lightsOff()
         })
     }
 }
 
-function glowUp () {
-    let randomLight = (Math.floor(Math.random() * game.lights.length))
-    console.log(randomLight)
-    var lightUp = document.getElementsByClassName('main-buttons')[randomLight]
-    console.log(lightUp)
-    lightUp.style.opacity = '0.5'
-    setTimeout(function() {blueButton.style.opacity = '1'}, 500)
-    setTimeout(function() {redButton.style.opacity = '1'}, 500)
-    setTimeout(function() {greenButton.style.opacity = '1'}, 500)
-    setTimeout(function() {yellowButton.style.opacity = '1'}, 500)
-    // document.getElementsByClassName('main-buttons')
-    game.lightSequence.push(randomLight)
-    console.log(lightSequence)
-}
-
 userInput()
 
-// function glowUp () {
-//         for (i = 0; i < game.lights.length; i ++) {
-//             // console.log(Math.floor(Math.random() * game.lights.length))
-//             var lightUp = (Math.floor(Math.random() * game.lights.length))
-//             game.lights[i]
-//             console.log(game.lights[i])
-//             game.lightSequence.push(lightUp)
-//             console.log(lightUp)
-//         }
-// }
+// If lightSequence = userSequence move on to the next round and run glow up again
+// If lightSequence != userSequence give failure message
+// after returning true clear both arrays before staring glowUp again
+if (game.lightSequence === game.userSequence) {
+    game.round ++
+    // glowUp()
+} else {
+    console.log('You failed!')
+}
 
 //for loop through game.lights array when color is selected make it match up with button in the html and make that light glow
-//object for running the game and rounds
-var game = {
-    round: 0,
-    lights: ['blue', 'red', 'green', 'yellow'],
-    lightSequence: [],
-    userSequence: []
-}
+
 
 // click start button to start a round. May change this to equal runGame function
 // var newGame = document.getElementsByClassName('start-button')[0] 
@@ -78,28 +80,14 @@ var game = {
 //     }
 // })
 
-function runGame () {
-    game.round
-    game.lightSequence
-    game.userSequence
-    if (game.lightSequence === game.userSequence) {
-        game.round ++
-    }
-}
-
-var gameLights = document.getElementsByClassName('main-buttons')
-let randomLight = Math.floor(Math.random()*gameLights.length)
-var lightSequence = [] // the sequence of random colors chosen by simon
-var userSequence = [] //the sequence of colors selected by the user
-
-
-        var  randomColor = document.getElementsByClassName('main-buttons')[i]
-        lightSequence = this.randomLight //select a random button
-this[Math.floor(Math.random()*gameLights.length)] //this allows it to change var doesn't
-// while loop to loop through a randomize function to make items light up by their self.
-// store every item that gets looped through in an empty array
-// await user input before adding more items
-// if user input !== value in array end loop
+// function runGame () {
+//     game.round
+//     game.lightSequence
+//     game.userSequence
+//     if (game.lightSequence === game.userSequence) {
+//         game.round ++
+//     }
+// }
 
 //check out classList
 
