@@ -23,32 +23,35 @@ function glowUp () {
     let randomLight = (Math.floor(Math.random() * game.lights.length))
     console.log(randomLight)
     var lightUp = document.getElementsByClassName('main-buttons')[randomLight]
-    console.log(lightUp)
+    console.log(lightUp.classList[0])
     lightUp.style.opacity = '0.5'
     lightsOff()
-    game.lightSequence.push(randomLight)
+    game.lightSequence.push(lightUp.classList[0])
     console.log(game.lightSequence)
     game.round ++
     console.log(game.round)
-    userInput()
+    console.log(checkArrays)
 }
 
 function startButton () {
     let start = document.getElementsByClassName('start-button')[0]
-        start.addEventListener('click', function() {
+    start.addEventListener('click', function() {
         glowUp()
     })
+    /// re write start.addEventListener('click', glowUp)
 }
 
 startButton()
 
 //make lights glow when clicked on
-function userInput() {
+function clickListener() {
     for (i = 0; i < 4; i++) {
      let grabColor = document.getElementsByClassName('main-buttons')[i]
-        grabColor.addEventListener('click', function() {
-            this.style.opacity = '0.5'
-            game.userSequence.push(this) // push the choice into userchoices array
+     grabColor.addEventListener('click', function() {
+         this.style.opacity = '0.5'
+         console.log('userInput', this, this.classList[0])
+         game.userSequence.push(this.classList[0])//outputs color instead of class name
+            // game.userSequence.push(this) // push the choice into userchoices array
             // increment the round counter
             //turns glowing lights back to normal color
             lightsOff()
@@ -56,17 +59,28 @@ function userInput() {
     }
 }
 
-userInput()
+clickListener()
+
+//add a handleUserChoice function here
 
 // If lightSequence = userSequence move on to the next round and run glow up again
 // If lightSequence != userSequence give failure message
 // after returning true clear both arrays before staring glowUp again
-if (game.lightSequence === game.userSequence) {
-    game.round ++
-    // glowUp()
-} else {
-    console.log('You failed!')
+function handleUserChoice () { 
+    for (i = 0 ; i < 100; i++) {
+        if (game.lightSequence[i] === game.userSequence[i]) {
+        game.round ++
+        // clear userSequence array
+        //glowUp()
+        //clear userSequence array, return lightSequence array and start glowUp again
+        } else {
+        console.log('You failed!')
+        }
+    }
 }
+// glowUp()
+    // in a for loop
+    //  game.userSequence[i] === game.lightSequence[i]
 
 //for loop through game.lights array when color is selected make it match up with button in the html and make that light glow
 
