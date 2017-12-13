@@ -1,10 +1,3 @@
-// create 4 "buttons" of some kind
-// color code those buttons
-// make the buttons light up
-// make the lights go in a random pattern that repeats with an extra light every turn after a user repeats the pattern by pressing the button
-// when a user makes a mistake alert them that they lost and give them the option to try again
-
-
 var blueButton = document.getElementsByClassName('main-buttons')[0]
 var redButton = document.getElementsByClassName('main-buttons')[1]
 var greenButton = document.getElementsByClassName('main-buttons')[3]
@@ -24,7 +17,8 @@ function lightsOff () {
     setTimeout(function() {greenButton.style.opacity = '1'}, 500)
     setTimeout(function() {yellowButton.style.opacity = '1'}, 500)
 }
-//make colors glow when clicked on
+
+//lets simon select random lights
 function glowUp () {
     let randomLight = (Math.floor(Math.random() * game.lights.length))
     console.log(randomLight)
@@ -34,10 +28,21 @@ function glowUp () {
     lightsOff()
     game.lightSequence.push(randomLight)
     console.log(game.lightSequence)
+    game.round ++
+    console.log(game.round)
+    userInput()
 }
 
-glowUp()
+function startButton () {
+    let start = document.getElementsByClassName('start-button')[0]
+        start.addEventListener('click', function() {
+        glowUp()
+    })
+}
 
+startButton()
+
+//make lights glow when clicked on
 function userInput() {
     for (i = 0; i < 4; i++) {
      let grabColor = document.getElementsByClassName('main-buttons')[i]
