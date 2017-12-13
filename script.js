@@ -28,9 +28,17 @@ function userInput() {
 }
 
 function glowUp () {
-    var lightUp = (Math.floor(Math.random() *game.lights.length))
+    let randomLight = (Math.floor(Math.random() * game.lights.length))
+    console.log(randomLight)
+    var lightUp = document.getElementsByClassName('main-buttons')[randomLight]
     console.log(lightUp)
-    game.lightSequence.push(lightUp)
+    lightUp.style.opacity = '0.5'
+    setTimeout(function() {blueButton.style.opacity = '1'}, 500)
+    setTimeout(function() {redButton.style.opacity = '1'}, 500)
+    setTimeout(function() {greenButton.style.opacity = '1'}, 500)
+    setTimeout(function() {yellowButton.style.opacity = '1'}, 500)
+    // document.getElementsByClassName('main-buttons')
+    game.lightSequence.push(randomLight)
     console.log(lightSequence)
 }
 
