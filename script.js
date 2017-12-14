@@ -33,7 +33,8 @@ function glowUp () {
     console.log(game.lightSequence)
     game.round ++
     console.log(game.round)
-    console.log(checkArrays)
+    handleUserChoice()
+    console.log('this is round ' + game.round)
 }
 
 function startButton () {
@@ -70,45 +71,35 @@ clickListener()
 // If lightSequence != userSequence give failure message
 // after returning true clear both arrays before staring glowUp again
 function handleUserChoice () { 
-    for (i = 0 ; i < 100; i++) {
-        if (game.lightSequence[i] === game.userSequence[i]) {
-        game.round ++
-        userSequence = []// clear userSequence array
+    for (i = 0 ; i < game.round; i++) {
+        console.log(game.round)
+        if (game.round === 1) {
+            return 
+        } else if (game.lightSequence[i] === game.userSequence[i]) {
+        userSequence.length = 0// clear userSequence array
+        console.log(userSequence)
+        // game.round ++
+        // console.log(game.round)
         //glowUp()
         //clear userSequence array, return lightSequence array and start glowUp again
+        // stringify and compare whole array
         } else {
         console.log('You failed!')
         }
     }
 }
 
-//for loop through game.lights array when color is selected make it match up with button in the html and make that light glow
-
-
-// click start button to start a round. May change this to equal runGame function
-// var newGame = document.getElementsByClassName('start-button')[0] 
-// newGame.addEventListener('click', function() {
-//     console.log('work')
-//     console.log(game.round)
-//     console.log(game.lightSequence)
-    //should probably stop after starting first round and first light sequence
-//     console.log(game.userSequence)
-//     if (game.lightSequence === game.userSequence) {
+// function handleUserChoice () {
+//     if (game.lightSequence[i] === game.userSequence[i]) {
 //         game.round ++
-//         console.log('work')
-//     }
-// })
-
-// function runGame () {
-//     game.round
-//     game.lightSequence
-//     game.userSequence
-//     if (game.lightSequence === game.userSequence) {
-//         game.round ++
+//         console.log(game.round++)
+//         userSequence = []
+//         console.log(userSequence)
+//         //glowUp()
+//     } else {
+//         console.log('You failed!')
 //     }
 // }
-
-//check out classList
 
 // opacity https://www.w3schools.com/jsref/prop_style_opacity.asp
 // random numbers javascript & jquery book
