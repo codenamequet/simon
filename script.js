@@ -21,8 +21,6 @@ function lightsOff () {
 
 //lets simon select random lights
 function glowUp () {
-    game.lightSequence
-    console.log(game.lightSequence)
     let randomLight = (Math.floor(Math.random() * game.lights.length))
     console.log(randomLight)
     var lightUp = document.getElementsByClassName('main-buttons')[randomLight]
@@ -33,7 +31,7 @@ function glowUp () {
     console.log(game.lightSequence)
     game.round ++
     console.log(game.round)
-    handleUserChoice()
+    // handleUserChoice()
     console.log('this is round ' + game.round)
 }
 
@@ -41,6 +39,7 @@ function startButton () {
     let start = document.getElementsByClassName('start-button')[0]
     start.addEventListener('click', function() {
         glowUp()
+        handleUserChoice()
     })
     /// re write start.addEventListener('click', glowUp)
 }
@@ -70,14 +69,15 @@ clickListener()
 // If lightSequence = userSequence move on to the next round and run glow up again
 // If lightSequence != userSequence give failure message
 // after returning true clear both arrays before staring glowUp again
+// make glowUp re-run it's array and then add 1 more to it
 function handleUserChoice () { 
     for (i = 0 ; i < game.round; i++) {
-        console.log(game.round)
+        console.log('this is round ' + game.round)
         if (game.round === 1) {
             return 
-        } else if (game.lightSequence[i] === game.userSequence[i]) {
-        userSequence.length = 0// clear userSequence array
-        console.log(userSequence)
+        } else if (JSON.stringify(game.lightSequence) === JSON.stringify(game.userSequence)) {
+        game.userSequence.length = // clear userSequence array
+        console.log(game.userSequence)
         // game.round ++
         // console.log(game.round)
         //glowUp()
