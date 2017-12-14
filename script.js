@@ -21,22 +21,21 @@ function lightsOff () {
 
 //lets simon select random lights
 function glowUp () {
+    playLastSequence()
     let randomLight = (Math.floor(Math.random() * game.lights.length))
     var lightUp = document.getElementsByClassName('main-buttons')[randomLight]
     lightUp.style.opacity = '0.5'
     lightsOff()
     game.lightSequence.push(lightUp.classList[0])
     console.log(game.lightSequence)
-    // game.round ++
     // handleUserChoice()
-    // console.log('this is round ' + game.round)
 }
 function handleUserChoice () { 
         console.log('this is round ' + game.round)
         if (JSON.stringify(game.lightSequence) === JSON.stringify(game.userSequence)) {
         game.userSequence = []// clear userSequence array
         console.log(game.userSequence)
-        // glowUp()
+        glowUp()
         //run glowUp or light up lights again
         game.round ++
         console.log(game.round)
@@ -44,7 +43,7 @@ function handleUserChoice () {
         //clear userSequence array, return lightSequence array and start glowUp again
         // stringify and compare whole array
         } else {
-        console.log('You failed!')
+        alert('Wrong button! Game Over!')
         }
     }
 
@@ -79,8 +78,28 @@ clickListener()
 
 // return the last lightSequence 
 function playLastSequence() {
-    var reLight = game.lightSequence
-    reLight.style.opacity = '0.5'
+    for (i = 0; i < game.lightSequence.length; i++) {
+        var reLight = game.lightSequence[i]
+        console.log(game.lightSequence[i])
+        var colors = {
+             blue: blueButton,
+             red:redButton,
+             green: greenButton,
+             yellow: yellowButton
+        }
+        colors[game.lightSequence[i]].style.opacity = '0.5'
+        // colors.style.opacity = '0.5'
+        // let blue = document.getElementsByClassName('main-button')[0]
+        // let red = document.getElementsByClassName('main-button')[1]
+        // let green = document.getElementsByClassName('main-button')[2]
+        // let yellow = document.getElementsByClassName('main-button')[3]
+
+        
+        
+        
+        // this.style.opacity = '0.5'
+        // console.log(reLight)
+    }
 }
 // for loop through lightSequence indexes target dom elements
 //add a handleUserChoice function here
