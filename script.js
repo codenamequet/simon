@@ -61,10 +61,10 @@ function handleUserChoice () {
         }
     }
     
-
+//button runs glowUp...want it to run initial game glow
 function startButton () {
     let start = document.getElementsByClassName('start-button')[0]
-    start.addEventListener('click', function() {
+    start.addEventListener('click', () => {
         glowUp()
     })
     /// re write start.addEventListener('click', glowUp)
@@ -72,9 +72,10 @@ function startButton () {
 
 startButton()
 
+//button simply runs handleUserChoice for now
 function compareButton () {
     let compare = document.getElementsByClassName('compare-button')[0]
-    compare.addEventListener('click', function() {
+    compare.addEventListener('click', () => {
         handleUserChoice()
     })
 }
@@ -93,6 +94,7 @@ function clickListener() {
             // increment the round counter
             //turns glowing lights back to normal color
             lightsOff()
+            scoreBoard()
         })
     }
 }
@@ -103,64 +105,29 @@ clickListener()
 function playLastSequence() {
     for (i = 0; i < game.lightSequence.length; i++) {
         var reLight = game.lightSequence[i]
-        console.log(game.lightSequence[i])
+        console.log('this is reLight' + game.lightSequence[i])
         var colors = {
              blue: blueButton,
              red:redButton,
              green: greenButton,
              yellow: yellowButton
         }
-        colors[game.lightSequence[i]].style.opacity = '0.5'
-        // colors.style.opacity = '0.5'
-        // let blue = document.getElementsByClassName('main-button')[0]
-        // let red = document.getElementsByClassName('main-button')[1]
-        // let green = document.getElementsByClassName('main-button')[2]
-        // let yellow = document.getElementsByClassName('main-button')[3]
-
-        
-        
-        
-        // this.style.opacity = '0.5'
-        // console.log(reLight)
+        function lightUp () {
+            setTimeout(function() {colors[game.lightSequence[0]].style.opacity = '0.5'}, i * 500)
+            setTimeout(function() {colors[game.lightSequence[1]].style.opacity = '0.5'}, i * 500)
+            setTimeout(function() {colors[game.lightSequence[3]].style.opacity = '0.5'}, i * 500)
+            setTimeout(function() {colors[game.lightSequence[2]].style.opacity = '0.5'}, i * 500)
+        // colors[game.lightSequence[i]].style.opacity = '0.5'
+        }
+        lightUp()
+        console.log('the resule of lightUp is ' + lightUp())
     }
 }
-// for loop through lightSequence indexes target dom elements
-//add a handleUserChoice function here
 
-// If lightSequence = userSequence move on to the next round and run glow up again
-// If lightSequence != userSequence give failure message
-// after returning true clear both arrays before staring glowUp again
-// make glowUp re-run it's array and then add 1 more to it
-// function handleUserChoice () { 
-//     for (i = 0; i < game.round; i++) {
-//         console.log('this is round ' + game.round)
-//         if (game.round === 1) {
-//             return 
-//         } else if (JSON.stringify(game.lightSequence) === JSON.stringify(game.userSequence)) {
-//         game.userSequence.length = // clear userSequence array
-//         console.log(game.userSequence)
-//         // game.round ++
-//         // console.log(game.round)
-//         //glowUp()
-//         //clear userSequence array, return lightSequence array and start glowUp again
-//         // stringify and compare whole array
-//         } else {
-//         console.log('You failed!')
-//         }
-//     }
-// }
+function scoreBoard () {
+    var score = document.getElementsByClassName('score')[0].textContent = game.round
+}
 
-// function handleUserChoice () {
-//     if (game.lightSequence[i] === game.userSequence[i]) {
-//         game.round ++
-//         console.log(game.round++)
-//         userSequence = []
-//         console.log(userSequence)
-//         //glowUp()
-//     } else {
-//         console.log('You failed!')
-//     }
-// }
-
+// scoreBoard()
 // opacity https://www.w3schools.com/jsref/prop_style_opacity.asp
 // random numbers javascript & jquery book
