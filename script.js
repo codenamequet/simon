@@ -112,6 +112,7 @@ function playLastSequence() {
              green: greenButton,
              yellow: yellowButton
         }
+        //only replays the last light
         function lightUp () {
             setTimeout(function() {colors[game.lightSequence[0]].style.opacity = '0.5'}, i * 500)
             setTimeout(function() {colors[game.lightSequence[1]].style.opacity = '0.5'}, i * 500)
