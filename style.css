@@ -51,6 +51,22 @@ main {
     margin-left: 25px;
 }
 
-/* .game-button {
-    background: greenyellow
-} */
+.other {
+    display: flex;
+    justify-content: center;
+}
+button {
+    margin: 25px 0;
+} 
+.start-button {
+    margin-right: 10px;
+}
+.score-board {
+    display: flex;
+    justify-content: center;
+}
+.score {
+    border: 1px solid black;
+    width: 75px;
+    text-align: center;
+}

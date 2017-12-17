@@ -101,11 +101,11 @@ function clickListener() {
 
 clickListener()
 
-// return the last lightSequence 
+//return the last lightSequence 
 function playLastSequence() {
     for (i = 0; i < game.lightSequence.length; i++) {
-        var reLight = game.lightSequence[i]
-        console.log('this is reLight' + game.lightSequence[i])
+        // var reLight = game.lightSequence[i]
+        // console.log('this is reLight' + game.lightSequence[i])
         var colors = {
              blue: blueButton,
              red:redButton,
@@ -114,19 +114,35 @@ function playLastSequence() {
         }
         //only replays the last light
         function lightUp () {
-            setTimeout(function() {colors[game.lightSequence[0]].style.opacity = '0.5'}, i * 500)
-            setTimeout(function() {colors[game.lightSequence[1]].style.opacity = '0.5'}, i * 500)
-            setTimeout(function() {colors[game.lightSequence[3]].style.opacity = '0.5'}, i * 500)
-            setTimeout(function() {colors[game.lightSequence[2]].style.opacity = '0.5'}, i * 500)
+            setTimeout(function() {colors[game.lightSequence[i]].style.opacity = '0.5'}, i * 1000)
         // colors[game.lightSequence[i]].style.opacity = '0.5'
         }
         lightUp()
-        console.log('the resule of lightUp is ' + lightUp())
+        console.log('the result of lightUp is ' + lightUp())
     }
 }
 
+// var colors = {
+//     blue: blueButton,
+//     red:redButton,
+//     green: greenButton,
+//     yellow: yellowButton
+// }
+
+// function lightUp (x) {
+//    setTimeout(function() {colors[game.lightSequence[x]].style.opacity = '0.5'}, i * 500)
+// }
+
+// function playLastSequence() {
+// for (i = 0; i < game.lightSequence.length; i++) {
+// lightUp(i)
+// console.log('this might be working ' + lightUp())
+// lightsOff()
+// }
+// }
+
 function scoreBoard () {
-    var score = document.getElementsByClassName('score')[0].textContent = game.round
+    var score = document.getElementsByClassName('score')[0].textContent = `Score: ${game.round}`
 }
 
 // scoreBoard()
