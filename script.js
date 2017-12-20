@@ -33,12 +33,13 @@ function lightsOff () {
 
 //lets simon select random lights
 function glowUp () {
-    playLastSequence()
+    // playLastSequence()
     let randomLight = (Math.floor(Math.random() * game.lights.length))
     var lightUp = document.getElementsByClassName('main-buttons')[randomLight]
-    lightUp.style.opacity = '0.5'
+    // lightUp.style.opacity = '0.5'
     lightsOff()
     game.lightSequence.push(lightUp.classList[0])
+    playLastSequence()
     console.log(game.lightSequence)
     // handleUserChoice() // not running this b/c lightSequence != empty beggining userSequence 
 }
@@ -58,8 +59,8 @@ function handleUserChoice () {
         // stringify and compare whole array
         } else {
         alert('Wrong button! Game Over!')
-        }
     }
+}
     
 //button runs glowUp...want it to run initial game glow
 function startButton () {
@@ -103,7 +104,7 @@ clickListener()
 
 //return the last lightSequence 
 function playLastSequence() {
-    for (i = 0; i < game.lightSequence.length; i++) {
+    for (let i = 0; i < game.lightSequence.length; i++) {
         // var reLight = game.lightSequence[i]
         // console.log('this is reLight' + game.lightSequence[i])
         var colors = {
@@ -114,11 +115,13 @@ function playLastSequence() {
         }
         //only replays the last light
         function lightUp () {
-            setTimeout(function() {colors[game.lightSequence[i]].style.opacity = '0.5'}, i * 1000)
-        // colors[game.lightSequence[i]].style.opacity = '0.5'
+            setTimeout(function () {colors[game.lightSequence[i]].style.opacity = '0.5' 
+            console.log('the result is ' + game.lightSequence[i])
+            lightsOff()
+        }, (i + 1) * 1000)
         }
+        // function test () {colors[game.lightSequence[i]].style.opacity = '0.5'}
         lightUp()
-        console.log('the result of lightUp is ' + lightUp())
     }
 }
 
