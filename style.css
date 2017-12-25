@@ -7,14 +7,7 @@ main {
     position: relative;
     margin: 100px 0 0 150px;
 }
-/* .container1 {
-    display: flex;
-    justify-content: center;
-}
-.container2 {
-    display: flex;
-    justify-content: center;
-} */
+
 .blue {
     background: blue;
     height: 200px;

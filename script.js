@@ -1,15 +1,3 @@
-/*
-sequence our calls:
-1. fn fade a light out (opacity: 0.5)
-2. fn fade a light back in (opacity: 1)
-3. currentStepInSequence:
-    - call fadeLightOut
-        - call fadeLightIn
-            - increment sequence counter
-            - call currentStepInSequence
-4. Clean up commented out code
-*/
-
 var blueButton = document.getElementsByClassName('main-buttons')[0]
 var redButton = document.getElementsByClassName('main-buttons')[1]
 var greenButton = document.getElementsByClassName('main-buttons')[3]
@@ -33,30 +21,23 @@ function lightsOff () {
 
 //lets simon select random lights
 function glowUp () {
-    // playLastSequence()
     let randomLight = (Math.floor(Math.random() * game.lights.length))
     var lightUp = document.getElementsByClassName('main-buttons')[randomLight]
-    // lightUp.style.opacity = '0.5'
     lightsOff()
     game.lightSequence.push(lightUp.classList[0])
     playLastSequence()
     console.log(game.lightSequence)
-    // handleUserChoice() // not running this b/c lightSequence != empty beggining userSequence 
 }
 
-//not running if game.round === 0 w/ glowUp() b/c it runs twice and then fails
 function handleUserChoice () { 
         console.log('this is round ' + game.round)
         if (JSON.stringify(game.lightSequence) === JSON.stringify(game.userSequence)) {
         game.userSequence = []// clear userSequence array
         console.log(game.userSequence)
-        // glowUp()
-        //run glowUp or light up lights agai
-        game.round ++
+        game.round += 100
+        scoreBoard()
         console.log(game.round)
         glowUp()
-        //clear userSequence array, return lightSequence array and start glowUp again
-        // stringify and compare whole array
         } else {
         alert('Wrong button! Game Over!')
     }
@@ -91,11 +72,7 @@ function clickListener() {
          this.style.opacity = '0.5'
          console.log('userInput', this, this.classList[0])
          game.userSequence.push(this.classList[0])//outputs color instead of class name
-            // game.userSequence.push(this) // push the choice into userchoices array
-            // increment the round counter
-            //turns glowing lights back to normal color
             lightsOff()
-            scoreBoard()
         })
     }
 }
@@ -105,49 +82,25 @@ clickListener()
 //return the last lightSequence 
 function playLastSequence() {
     for (let i = 0; i < game.lightSequence.length; i++) {
-        // var reLight = game.lightSequence[i]
-        // console.log('this is reLight' + game.lightSequence[i])
         var colors = {
              blue: blueButton,
              red:redButton,
              green: greenButton,
              yellow: yellowButton
         }
-        //only replays the last light
         function lightUp () {
             setTimeout(function () {colors[game.lightSequence[i]].style.opacity = '0.5' 
             console.log('the result is ' + game.lightSequence[i])
             lightsOff()
         }, (i + 1) * 1000)
         }
-        // function test () {colors[game.lightSequence[i]].style.opacity = '0.5'}
         lightUp()
     }
 }
-
-// var colors = {
-//     blue: blueButton,
-//     red:redButton,
-//     green: greenButton,
-//     yellow: yellowButton
-// }
-
-// function lightUp (x) {
-//    setTimeout(function() {colors[game.lightSequence[x]].style.opacity = '0.5'}, i * 500)
-// }
-
-// function playLastSequence() {
-// for (i = 0; i < game.lightSequence.length; i++) {
-// lightUp(i)
-// console.log('this might be working ' + lightUp())
-// lightsOff()
-// }
-// }
 
 function scoreBoard () {
     var score = document.getElementsByClassName('score')[0].textContent = `Score: ${game.round}`
 }
 
-// scoreBoard()
 // opacity https://www.w3schools.com/jsref/prop_style_opacity.asp
 // random numbers javascript & jquery book
