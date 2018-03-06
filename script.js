@@ -1,15 +1,3 @@
-/*
-sequence our calls:
-1. fn fade a light out (opacity: 0.5)
-2. fn fade a light back in (opacity: 1)
-3. currentStepInSequence:
-    - call fadeLightOut
-        - call fadeLightIn
-            - increment sequence counter
-            - call currentStepInSequence
-4. Clean up commented out code
-*/
-
 var blueButton = document.getElementsByClassName('main-buttons')[0]
 var redButton = document.getElementsByClassName('main-buttons')[1]
 var greenButton = document.getElementsByClassName('main-buttons')[3]
@@ -125,29 +113,9 @@ function playLastSequence() {
     }
 }
 
-// var colors = {
-//     blue: blueButton,
-//     red:redButton,
-//     green: greenButton,
-//     yellow: yellowButton
-// }
-
-// function lightUp (x) {
-//    setTimeout(function() {colors[game.lightSequence[x]].style.opacity = '0.5'}, i * 500)
-// }
-
-// function playLastSequence() {
-// for (i = 0; i < game.lightSequence.length; i++) {
-// lightUp(i)
-// console.log('this might be working ' + lightUp())
-// lightsOff()
-// }
-// }
-
 function scoreBoard () {
     var score = document.getElementsByClassName('score')[0].textContent = `Score: ${game.round}`
 }
 
-// scoreBoard()
 // opacity https://www.w3schools.com/jsref/prop_style_opacity.asp
 // random numbers javascript & jquery book
