@@ -11,8 +11,10 @@ Simon is a memory game where the computer randomly selects lights to be added to
 Start button to begin the game.
 End button for users to press after completing their pattern.
 Updated scoreboard between rounds.
+Computer chooses patterns at random.
+Computer remembers and builds on past turns.
 
-###List of Technologies Used
+### List of Technologies Used
 
 HTML, CSS, Javascript
 

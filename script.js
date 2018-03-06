@@ -1,7 +1,7 @@
-var blueButton = document.getElementsByClassName('main-buttons')[0]
-var redButton = document.getElementsByClassName('main-buttons')[1]
-var greenButton = document.getElementsByClassName('main-buttons')[3]
-var yellowButton = document.getElementsByClassName('main-buttons')[2]
+var blueButton = document.getElementsByClassName('main-buttons')[3]
+var redButton = document.getElementsByClassName('main-buttons')[2]
+var greenButton = document.getElementsByClassName('main-buttons')[1]
+var yellowButton = document.getElementsByClassName('main-buttons')[0]
        
 //object for running the game and rounds
 var game = {
@@ -40,6 +40,7 @@ function handleUserChoice () {
         glowUp()
         } else {
         alert('Wrong button! Game Over!')
+        location.reload()
     }
 }
     
